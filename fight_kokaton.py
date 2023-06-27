@@ -62,6 +62,7 @@ class Bird:
         self.img = self.imgs[(+5, 0)]
         self.rct = self.img.get_rect()
         self.rct.center = xy
+        self.dire = (+5, 0)
 
     def change_img(self, num: int, screen: pg.Surface):
         """
@@ -163,6 +164,20 @@ class Explosion:
         self.life -= 1
         screen.blit(self.imgs[self.life%2], self.rct)
         
+
+class Score:
+    """
+    スコア表示に関するクラス
+    """
+    def __init__(self):
+        self.font=pg.font.SysFont("hgp創英角ﾎﾟｯﾌﾟ体", 30)
+        self.score = 0
+        self.img = self.font.render("表示させる文字列", 0, (0, 0, 255))
+        self.rct = self.img.get_rect()
+        self.rct.center = (100, -50)
+
+    def update(self, screen:pg.Surface):
+        self.score += 1
    
 
    
